@@ -3,52 +3,136 @@
 입력(input) -> 함수 -> 출력(output)
 
 ```python
-print("""
-안녕하세요.
-제 이름은 심교훈이고,
-나이는 35살입니다.
-""")
-
-print("""
-안녕하세요.
-제 이름은 심로아이고,
-나이는 5살입니다.
-""")
-
-print("""
-안녕하세요.
-제 이름은 심인아이고,
-나이는 4살입니다.
-""")
+def 함수명(매개변수1, 매개변수2, ...):
+    (중략)
+    return something
 ```
 
-위 코드를 보면 굉장히 비슷한 패턴인 코드들이 반복되어 등장하고 있음.
+```python
+def add(num1, num2):
+    return num1 + num2
+
+result1 = add(7, 4)
+print(result1)
+
+result2 = add(12, 8)
+print(result2) 
+```
+
+## 함수가 필요한 이유
+
+아래 코드를 보면 굉장히 비슷한 패턴인 코드들이 반복되어 등장하고 있음.
+
+```python
+print("""안녕하세요.
+제 이름은 심교훈이고,
+나이는 35살입니다.""")
+
+print("""안녕하세요.
+제 이름은 심로아이고,
+나이는 5살입니다.""")
+
+print("""안녕하세요.
+제 이름은 심인아이고,
+나이는 3살입니다.""")
+```
 
 반복되는 부분을 함수로 만들어주면 간결하게 코드를 작성할 수 있음.
 
 ```python
 def introduce(name, age):
-    print()
+    print(f"""안녕하세요.
+제 이름은 {name}이고,
+나이는 {age}살입니다.""")
 
-print("""
-안녕하세요.
-제 이름은 심교훈이고,
-나이는 35살입니다.
-""")
-
-print("""
-안녕하세요.
-제 이름은 심로아이고,
-나이는 5살입니다.
-""")
-
-print("""
-안녕하세요.
-제 이름은 심인아이고,
-나이는 4살입니다.
-""")
+introduce("심교훈", 35)
+introduce("심로아", 5)
+introduce("심인아", 3)
 ```
 
 ## 타입 어노테이션
 
-파이썬은 원래 약타입 언어. C, Java 등과 같이 변수의 타입을 강제하지 않음. 하지만 그러다보니 배우기는 쉽지만 예상치 못한 에러를 경험할 가능성이 있음. 그래서 타입 어노테이션이라는 것을 사용함.
+파이썬은 원래 약타입 언어. C, Java 등과 같이 변수의 타입을 강제하지 않음.
+
+하지만 그러다보니 배우기는 쉽지만 예상치 못한 에러를 경험할 가능성이 있음.
+
+그래서 타입 어노테이션이라는 것을 사용함.
+
+함수의 매개변수와 출력의 타입에 대한 힌트를 줄 수 있음.
+
+```python
+def introduce(name, age):
+    if age < 20:
+        print(f"제 이름은 {name}이고, 스무살이 채 되지 않았습니다.")
+    else:
+        print(f"제 이름은 {name}이고, {age}살입니다.")
+
+introduce("심교훈", 35)
+introduce("김초딩", "11")
+```
+
+위에서 introduce 함수는 age가 숫자일 때 제대로 작동할 수 있음. 하지만 그에 대한 제한이 없기 때문에 사용자가 함수를 잘못 사용하여 오류를 경험할 가능성이 높음.
+
+```python
+def introduce(name: str, age: int) -> None:
+    if age < 20:
+        print(f"제 이름은 {name}이고, 스무살이 채 되지 않았습니다.")
+    else:
+        print(f"제 이름은 {name}이고, {age}살입니다.")
+
+introduce("심교훈", 35)
+introduce("김초딩", 11)
+```
+
+위와 같이 매개변수와 함수의 출력에 대한 타입에 대한 힌트를 주면 개발하는 입장에서 에러를 줄일 수 있음.
+
+## 독스트링
+
+함수, 클래스 등을 정의한 사람은 그 함수의 사용법에 대해서 작성하는 것이 좋음. 그것을 독스트링(docstring)이라고 함.
+
+함수를 사용하는 사람 입장에서 사용법에 대한 정보를 한눈에 파악할 수 있음.
+
+독스트링의 대상은 모듈, 클래스, 함수(메소드).
+
+다양한 독스트링 컨벤션이 있는데, 그 중 google 스타일이 괜찮음.
+
+참고자료
+- <https://stackoverflow.com/questions/3898572/what-are-the-most-common-python-docstring-formats>
+- https://engineer-mole.tistory.com/136
+
+```python
+"""This is an example of Google style.
+
+Args:
+    param1 (data type): This is the first param.
+    param2 (data type): This is a second param.
+
+Returns:
+    data type: This is a description of what is returned.
+
+Raises:
+    KeyError: Raise an exception.
+```
+
+```python
+def add(num1: int, num2: int) -> int:
+    '''매개변수로 전달받은 두 개의 정수를 더해서 반환
+
+    Args:
+        num1 (int): 첫번째 정수
+        num2 (int): 두번째 정수
+
+    Returns:
+        int: 전달받은 두 개의 정수의 합, num1 + num2
+    
+    Raises:
+        TypeError: num1 또는 num2가 정수가 아닙니다
+    '''
+    if type(num1) != int or type(num2) != int:
+        raise TypeError("num1 또는 num2가 정수가 아닙니다.")
+
+    return num1 + num2
+
+print(add(1, 5)) # 6
+print(add("2", 3)) # TypeError: num1 또는 num2가 정수가 아닙니다.
+```
