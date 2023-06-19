@@ -4,11 +4,11 @@
 
 ## 목차
 
-- 자료형
-- 조건문
-- 반복문
-- 함수
-- 클래스
+- 자료형: 01_data_type.md
+- 조건문: 02_conditional_statements.md
+- 반복문: 03_iterational_statements.md
+- 함수: 04_function.md
+- 클래스: 
 - 모듈, 패키지
 - 내장 함수, 표준 라이브러리, 외부 라이브러리
 - 예외 처리

@@ -1,7 +1,17 @@
-class Mine:
-    def hahaha(self):
-        print("hahaha") 
-    
+print("""
+안녕하세요.
+제 이름은 심교훈이고,
+나이는 35살입니다.
+""")
 
-mine = Mine()
-print(dir(mine))
+print("""
+안녕하세요.
+제 이름은 심로아이고,
+나이는 5살입니다.
+""")
+
+print("""
+안녕하세요.
+제 이름은 심인아이고,
+나이는 4살입니다.
+""")
