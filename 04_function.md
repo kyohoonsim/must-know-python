@@ -128,7 +128,7 @@ def add(num1: int, num2: int) -> int:
     Raises:
         TypeError: num1 또는 num2가 정수가 아닙니다
     '''
-    if type(num1) != int or type(num2) != int:
+    if type(num1) is not int or type(num2) is not int:
         raise TypeError("num1 또는 num2가 정수가 아닙니다.")
 
     return num1 + num2

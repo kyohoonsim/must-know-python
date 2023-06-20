@@ -13,3 +13,7 @@
 - 내장 함수, 표준 라이브러리, 외부 라이브러리: 07_library.md
 - 예외 처리: 08_exception.md
 - 로깅: 09_logging.md
+
+## 참고자료
+
+- <https://docs.python.org/3/tutorial/index.html>

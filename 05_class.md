@@ -124,7 +124,180 @@ p2.introduce()
 p2.play_soccer()
 ```
 
-## 정적메서드
+## isinstance 함수
+
+특정 객체가 특정 클래스의 인스턴스인지 확인하는 함수.
+
+사용법: isinstance(객체, 클래스)
+
+```python
+print(isinstance(3, int)) # True
+print(isinstance('심교훈', str)) # True
+print(isinstance('심교훈', int)) # False
+```
+
+```python
+class Person:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def introduce(self):
+        print(f"제 이름은 {self.name}이고, 나이는 {self.age}입니다.")
 
 
-## 클래스메서드
+class Programmer(Person):
+    def coding(self):
+        print("저는 코딩을 합니다.") 
+
+
+class SoccerPlayer(Person):
+    def play_soccer(self):
+        print("저는 축구를 합니다.")
+
+
+p1 = Programmer("심교훈", 35)
+p2 = SoccerPlayer("손흥민", 31)
+
+print(isinstance(p1, Programmer)) # True
+print(isinstance(p2, SoccerPlayer)) # True
+print(isinstance(p2, Programmer)) # False
+print(isinstance(p1, Person)) # True
+```
+
+### type 함수 vs isinstance 함수
+
+어떤 객체의 type, class를 확인할 때는 크게 두 가지 방법이 있음.
+
+- type(객체) is 클래스
+- isinstance(객체, 클래스)
+
+    ```python
+    print(type(3) is int) # True
+    print(isinstance(3, int)) # True
+    ```
+
+    isinstance() 함수는 부모 클래스에도 True를 반환.
+
+    반면, type() is 방식은 부모 클래스에 대해서는 False를 반환.
+
+    ```python
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self.age = age
+
+        def introduce(self):
+            print(f"제 이름은 {self.name}이고, 나이는 {self.age}입니다.")
+
+
+    class Programmer(Person):
+        def coding(self):
+            print("저는 코딩을 합니다.") 
+
+
+    p1 = Programmer("심교훈", 35)
+
+    print(isinstance(p1, Programmer)) # True
+    print(isinstance(p1, Person)) # True 
+
+    print(type(p1) is Programmer) # True
+    print(type(p1) is Person) # False
+    ```
+
+## 클래스 속성
+
+클래스를 정의할 때 메서드 밖에 존재하는 변수(속성)을 클래스 변수(속성)이라고 함.
+
+```python
+class Person:
+    person_cnt = 0 # 클래스 변수
+
+    def __init__(self, name, age):
+        self.name = name # 인스턴스 변수
+        self.age = age # 인스턴스 변수
+        Person.person_cnt += 1
+        print(f"현재까지 사람 객체 {Person.person_cnt}명 생성됨.")
+
+
+person1 = Person("심교훈", 35) # 현재까지 사람 객체 1명 생성됨.
+person2 = Person("문태호", 36) # 현재까지 사람 객체 2명 생성됨.
+
+print(person1.person_cnt) # 2
+print(person1.person_cnt) # 2
+print(Person.person_cnt) # 2
+```
+
+클래스 안에서 클래스 속성에 접근할 떄는 "클래스명.변수명"으로 접근 가능.
+
+클래스 밖에서 클래스 속성에 접근할 때는 "클래스명.변수명" 또는 "인스턴스명.변수명"으로 접근 가능.
+
+인스턴스마다 독립적인 값을 갖지 않고, 같은 값을 공유.
+
+## 클래스 메서드
+
+class 내 메소드에 @classmethod 데코레이터가 붙은 것들을 클래스 메서드라고 함.
+
+클래스 메서드의 첫 매개변수는 항상 cls.
+
+```python
+from datetime import datetime
+
+
+class Person:
+    person_cnt = 0
+
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+        Person.add_person_cnt()
+
+    @classmethod
+    def add_person_cnt(cls):
+        cls.person_cnt += 1
+
+    @classmethod
+    def print_person_cnt(cls):
+        print(f"현재까지 {Person.person_cnt}명 생성됨.")
+    
+    @classmethod
+    def from_year(cls, name, year): # 팩토리 메서드용 classmethod
+        return cls(name, datetime.now().year - year + 1)
+
+
+p1 = Person("심교훈", 35)
+p2 = Person.from_year("문태호", 1987)
+
+p1.print_person_cnt()
+```
+
+## 정적 메서드
+
+class 내 메소드에 @staticmethod 데코레이터가 붙은 것들을 정적 메서드라고 함.
+
+비슷한 기능을 수행하는 유틸리티 함수들을 하나의 클래스 안에 묶어두기 위한 용도로 많이 사용.
+
+```python
+class Calc:
+    @staticmethod
+    def add(x, y):
+        return x + y
+
+    @staticmethod
+    def sub(x, y):
+        return x - y
+
+    @staticmethod
+    def mul(x, y):
+        return x * y
+
+    @staticmethod
+    def div(x, y):
+        return x / y
+
+
+print(Calc.add(5, 7)) # 12
+print(Calc.sub(8, 3)) # 5
+print(Calc.mul(4, 6)) # 24
+print(Calc.div(9, 2)) # 4.5
+```
