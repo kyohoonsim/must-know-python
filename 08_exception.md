@@ -98,7 +98,20 @@
 - RecursionError
 - ReferenceError
 - RuntimeError
-- StopIteration
+- StopIteration: 이터레이터가 더이상 순회할 것이 없을 때 발생
+
+    ```python
+    a = [1, 2, 3, 4, 5]
+    iterator_a = iter(a)
+
+    print(next(iterator_a)) # 1
+    print(next(iterator_a)) # 2
+    print(next(iterator_a)) # 3
+    print(next(iterator_a)) # 4
+    print(next(iterator_a)) # 5
+    print(next(iterator_a)) # StopIteration
+    ```
+
 - StopAsyncIteration
 - SyntaxError: 구문 오류, 파이썬 문법을 지키지 않았을 때 발생
 

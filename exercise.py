@@ -1,2 +1,3 @@
-while True:
-    print("무한반복")
+PI = 3.141592
+
+print(f"파이: {PI:10.2f}") # 파이: 3.14
