@@ -1,3 +1,5 @@
-PI = 3.141592
+import qrcode
 
-print(f"파이: {PI:10.2f}") # 파이: 3.14
+url = 'https://bskyvision.com'
+qrcode_img = qrcode.make(url)
+qrcode_img.save('./my_qrcode.png')

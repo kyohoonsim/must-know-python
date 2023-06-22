@@ -253,10 +253,39 @@ print(next(iterator_a)) # StopIteration
 
 ex) random, sys, os, time, datetime, logging 등
 
+각 라이브러리 별로 사용법이 다 다름. 자주 쓰는 라이브러리 사용법은 잘 알아두는 것이 좋음.
+
 ---
 
 ## 외부 라이브러리
 
-pip install [패키지명] 등의 방식으로 설치해서 사용하는 라이브러리.
+표준으로 제공되지 않기 때문에 개발자가 별도로 설치해서 사용하는 라이브러리.
 
-ex) pandas, opencv-python, requests, fastapi, numpy, matplotlib 등
+ex) pandas, opencv-python, requests, fastapi, numpy, matplotlib, qrcode 등
+
+## pip 명령어 정리
+
+pip는 파이썬의 패키지 관리자
+
+- 패키지 목록 확인: `pip list`
+
+- 패키지 설치: `pip install [패키지명]`
+
+- 패키지 삭제: `pip uninstall [패키지명]`
+
+## qrcode 라이브러리로 내 블로그 또는 깃허브 QR 코드 만들어보기
+
+패키지 설치
+
+- `pip install qrcode`
+- `pip install pillow`
+
+아래 파이썬 코드를 실행하면 현재 작업 디렉토리에 my_qrcode.png라는 이름의 이미지 파일이 생성될 것임. 열어보면 QR 코드가 담겨 있을 것임.
+
+```python
+import qrcode
+
+url = 'https://bskyvision.com'
+qrcode_img = qrcode.make(url)
+qrcode_img.save('./my_qrcode.png')
+```
