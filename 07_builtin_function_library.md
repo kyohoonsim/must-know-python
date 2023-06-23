@@ -311,3 +311,12 @@ url = 'https://bskyvision.com'
 qrcode_img = qrcode.make(url)
 qrcode_img.save('./my_qrcode.png')
 ```
+
+---
+
+## 다양한 파이썬 라이브러리를 활용해보고 싶다면
+
+제가 쓴 책 <쓸모있는 파이썬 프로그램 40개>를 참고하세요^^
+
+- 소스코드 레포지토리: <https://github.com/kyohoonsim/useful_python_program_40>
+- 구매처: <https://product.kyobobook.co.kr/detail/S000202678019>
