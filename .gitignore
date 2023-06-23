@@ -1,1 +1,7 @@
 __pycache__/
+
+.venv/
+
+poetry.lock
+
+pyproject.toml

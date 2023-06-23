@@ -8,6 +8,12 @@
 
 속성과 메소드로 구성.
 
+클래스명은 파스칼 케이스로 한다. PascalCase
+
+    - 파스칼 케이스: PascalCase
+    - 카멜 케이스: camelCase
+    - 스네이크 케이스: snake_case
+
 ## 클래스가 필요한 이유
 
 ```python
@@ -53,6 +59,44 @@ p2.introduce_family_name()
 p3 = Person("황병일", 37)
 p3.introduce()
 p3.introduce_family_name()
+```
+
+## 클래스 예제
+
+클래스에 대한 이해를 돕기 위해 스마트폰 클래스를 만들어보자.
+
+스마트폰 클래스는 제조사(ex: 애플, 삼성 등) 속성과 가격 속성을 갖는다.
+
+스마트폰 클래스는 전화 통화 메서드와 웹 서핑 메서드와 게임하기 메서드를 갖는다.
+
+해당 클래스로 2개 객체를 찍어보자.
+
+그리고 각 객체가 가진 능력을 다양하게 활용해보자.
+
+```python
+class SmartPhone():
+    def __init__(self, manufacturer: str, price: int):
+        self.manufacturer = manufacturer
+        self.price = price
+    
+    def call(self):
+        print(f"{self.manufacturer} 스마트폰으로 전화통화를 합니다.")
+
+    def web_surf(self):
+        print("웹서핑을 합니다.")
+
+    def play_game(self):
+        print(f"{self.price}원 스마트폰으로 게임을 합니다.")
+
+
+smartphone1 = SmartPhone("애플", 1400000)
+smartphone2 = SmartPhone("삼성", 1200000)
+
+smartphone1.call() # 애플 스마트폰으로 전화통화를 합니다.
+smartphone1.web_surf() # 웹서핑을 합니다.
+
+smartphone2.call() # 삼성 스마트폰으로 전화통화를 합니다.
+smartphone2.play_game() # 1200000원 스마트폰으로 게임을 합니다.
 ```
 
 ## 상속
