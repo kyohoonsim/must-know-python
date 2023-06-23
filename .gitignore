@@ -5,3 +5,5 @@ __pycache__/
 poetry.lock
 
 pyproject.toml
+
+my_qrcode.png
