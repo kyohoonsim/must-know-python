@@ -64,7 +64,15 @@
 - bytearray()
 - bytes()
 - callable()
-- chr()
+- chr(): 아스키 코드를 문자로 변환
+
+    ```python
+    print(chr(65))  # A
+    print(chr(97))  # a
+    print(chr(48))  # 0
+    print(chr(49))  # 1
+    ```
+
 - classmethod(): 클래스 메서드 선언시 사용
 - compile()
 - complex()
