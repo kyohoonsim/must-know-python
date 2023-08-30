@@ -166,7 +166,14 @@
 - object()
 - oct(): 정수를 0o로 시작하는 8진수로 변환
 - open()
-- ord()
+- ord(): 문자에 해당하는 아스키 코드 반환
+
+    ```python
+    print(ord('A'))  # 65
+    print(ord('0'))  # 48
+    print(ord(" "))  # 32
+    ```
+
 - pow(): 거듭제곱
 
     ```python
