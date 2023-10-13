@@ -9,4 +9,4 @@ elif num in [9, 10, 11]:
 elif num in [12, 1, 2]:
     print("겨울")
 else:
-    print("잘못된 입력")
+    print("1~12 사이의 숫자를 입력하세요")

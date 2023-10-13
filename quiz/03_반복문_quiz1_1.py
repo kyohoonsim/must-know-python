@@ -1,3 +1,7 @@
+def show_happy_point(point):
+    print(f"현재 강아지 행복 점수: {point}")
+
+
 print("="*30)
 print("강아지 돌보는 로봇 v1.0")
 print("="*30)
@@ -10,16 +14,20 @@ while True:
     if sel == "1":
         print("먹이를 줍니다.")
         happy_point += 5
+        show_happy_point(happy_point)
     elif sel == "2":
         print("놀아 줍니다.")
         happy_point += 7
+        show_happy_point(happy_point)
     elif sel == "3":
         print("산책을 시킵니다.")
         happy_point += 10
+        show_happy_point(happy_point)
     elif sel == "4":
         print("목욕을 시킵니다.")
         happy_point += 3
+        show_happy_point(happy_point)
     elif sel == "q":
         print("프로그램을 종료합니다.")
-        print(f"강아지 행복 점수: {happy_point}점")
+        show_happy_point(happy_point)
         break
