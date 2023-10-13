@@ -12,8 +12,8 @@ class Pikachu(Pokemon):
 
 
 class Ggobugi(Pokemon):
-    def attack_water(self):
-        print("물 공격")
+    def swim(self):
+        print("음파음파")
 
 
 pikachu1 = Pikachu("피카츄1")
@@ -22,4 +22,4 @@ ggobugi1 = Ggobugi("꼬부기1")
 pikachu1.introduce()
 ggobugi1.introduce()
 pikachu1.attack_electric()
-ggobugi1.attack_water()
+ggobugi1.swim()
